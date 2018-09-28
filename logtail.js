@@ -143,20 +143,34 @@ function show_log() {
 
     var t = log_data;
 
+    var t_a = t.split(/\n/g);
+
+    t_a.forEach(doHighlight);
+
     if (reverse) {
-        var t_a = t.split(/\n/g);
         t_a.reverse();
         if (t_a[0] == "") 
             t_a.shift();
-        t = t_a.join("\n");
     }
+    t = t_a.join("\n");
 
     if (fix_rn)
         t = t.replace(/\n/g, "\r\n");
 
-    $(dataelem).text(t);
+    $(dataelem).html(t);
     if (!reverse)
         scroll(-1);
+}
+
+function doHighlight(elem, index, array) {
+   var cssClass = "default";
+   if (elem.indexOf('DEBUG') != -1)
+      cssClass = "debug";
+   else if (elem.indexOf('WARN') != -1)
+      cssClass = "warn";
+   else if (elem.indexOf('ERROR') != -1)
+      cssClass = "error";
+   array[index] = "<span class=\"" + cssClass + "\">" + elem + "</span>";
 }
 
 function error(what) {

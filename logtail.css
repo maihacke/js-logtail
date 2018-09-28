@@ -1,0 +1,27 @@
+.debug {
+   font-family : monospace;
+   color : darkgray;
+}
+
+.warn {
+   font-family: monospace;
+   color: yellow;
+}
+
+.error {
+   font-family: monospace;
+   color: red;
+}
+
+.default {
+   font-family: monospace;
+}
+
+body {
+   background-color: black;
+   color: lightgray;
+}
+
+a:visited {
+   color: lightblue;
+}
